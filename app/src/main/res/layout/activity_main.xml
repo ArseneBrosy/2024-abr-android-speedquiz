@@ -117,22 +117,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="@string/about_version">
-        </TextView>
+            android:text="@string/about_version"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="@string/about_author">
-        </TextView>
+            android:text="@string/about_author"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/about_ok_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/about_ok"
+            android:text="@string/ok_button"
             android:layout_marginTop="20sp"
             android:textSize="15sp" />
 

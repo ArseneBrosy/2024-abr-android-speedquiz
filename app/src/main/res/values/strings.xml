@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">SpeedQuiz</string>
-    <string name="home_title">Speed Quiz</string>
+    <string name="app_name" translatable="false">SpeedQuiz</string>
+    <string name="home_title" translatable="false">Speed Quiz</string>
     <string name="home_new_player">New player</string>
     <string name="home_start_game">Start game</string>
     <string name="home_new_player_edit_text">Player name</string>
@@ -11,5 +11,7 @@
     <string name="button_restart">Restart</string>
     <string name="about_version">Version: 1.0.0</string>
     <string name="about_author">Author: Arsène Brosy</string>
-    <string name="about_ok">OK</string>
+    <string name="ok_button">OK</string>
+    <string name="settings_questions_speed">Questions speed</string>
+    <string name="settings_questions_number">Number of questions</string>
 </resources>

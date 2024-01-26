@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/settings_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="@string/menu_settings"/>
+    
+    <TextView
+        android:id="@+id/settings_question_speed_label"
+        android:layout_below="@id/settings_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/settings_questions_speed"/>
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/settings_question_speed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/settings_question_speed_label"
+        android:valueFrom="2.0"
+        android:valueTo="10.0"
+        android:value="5"
+        android:stepSize="0.5"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@id/settings_question_speed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:hint="@string/settings_questions_number">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:text="@string/ok_button"
+        android:textSize="15sp" />
+
+</RelativeLayout>

@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.about_layout).setVisibility(View.VISIBLE);
             return true;
         }
+        if (item.getItemId() == R.id.action_settings) {
+            Intent settingsActivity = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(settingsActivity);
+        }
         return false;
     }
 
