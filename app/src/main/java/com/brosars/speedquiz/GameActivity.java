@@ -81,7 +81,7 @@ public class GameActivity extends AppCompatActivity {
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameManager.startTimer();
+                recreate();
             }
         });
 
