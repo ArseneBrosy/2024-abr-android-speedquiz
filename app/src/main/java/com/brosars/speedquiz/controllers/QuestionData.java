@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.brosars.speedquiz.models.SpeedQuizSQLite;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class QuestionData {
     private ArrayList<Question> questions = new ArrayList<>();
@@ -32,6 +33,8 @@ public class QuestionData {
         }
         cursor.close();
         db.close();
+
+        Collections.shuffle(listQuestion );
 
         return listQuestion;
     }
