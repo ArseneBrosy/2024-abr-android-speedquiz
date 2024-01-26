@@ -12,7 +12,7 @@ import java.util.TimerTask;
 
 public class GameManager {
     private final static int QUESTION_TIME = 5000;
-    private QuestionData questionData = new QuestionData();
+    public QuestionData questionData;
     private int questionIndex = 0;
     private GameActivity gameActivity;
     private int playerOneScore = 0;
@@ -51,7 +51,6 @@ public class GameManager {
      * Start the game by showing the first question
      */
     public void startGame() {
-        questionData.fillQuestions();
         gameActivity.getEndButtons().setVisibility(View.INVISIBLE);
         gameActivity.setQuestion(questionData.getQuestions().get(0).getLabel());
         // Show the next question after the time is up
@@ -77,7 +76,7 @@ public class GameManager {
     /**
      * @return true if the currently showed question is true, else false
      */
-    public boolean getCurrentAnswer() {
+    public int getCurrentAnswer() {
         return questionData.getQuestions().get(questionIndex).getAnswer();
     }
 
@@ -89,7 +88,7 @@ public class GameManager {
         if (questionIndex >= questionData.getQuestions().size()) {
             return;
         }
-        int scoreAdder = getCurrentAnswer() ? 1 : -1;
+        int scoreAdder = getCurrentAnswer() == 1 ? 1 : -1;
         playerOneScore += player == 1 ? scoreAdder : 0;
         playerTwoScore += player == 2 ? scoreAdder : 0;
         // don't let the scores go below 0

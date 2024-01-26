@@ -1,25 +1,39 @@
 package com.brosars.speedquiz.controllers;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.brosars.speedquiz.models.SpeedQuizSQLite;
 
 import java.util.ArrayList;
 
 public class QuestionData {
     private ArrayList<Question> questions = new ArrayList<>();
 
+    public QuestionData(Context context) {
+        questions = initQuestionList(context);
+    }
+
     /**
-     * fill the list of questions
+     * Charge une liste de question depuis la DB.
+     * @param context Le contexte de l'application pour passer la query
+     * @return Une arraylist charger de Question
      */
-    public void fillQuestions() {
-        questions.add(new Question("The Amazon rainforest is often referred to as the \"lungs of the Earth.\"", true));
-        questions.add(new Question("Marie Curie was the first woman to win a Nobel Prize.", true));
-        questions.add(new Question("The currency of South Korea is the yuan.", false));
-        questions.add(new Question("The Great Wall of China was built to keep out invading Mongol forces.", false));
-        questions.add(new Question("The Sahara Desert is the largest hot desert in the world.", true));
-        questions.add(new Question("The speed of light is faster than the speed of sound.", true));
-        questions.add(new Question("The Great Pyramid of Giza is the only remaining wonder of the ancient world.", true));
-        questions.add(new Question("The currency of Mexico is the peso.", true));
-        questions.add(new Question("The moon is larger than the planet Mercury.", false));
-        questions.add(new Question("The longest river in Europe is the Danube.", false));
+    private ArrayList<Question> initQuestionList(Context context){
+        ArrayList<Question> listQuestion = new ArrayList<>();
+        SpeedQuizSQLite helper = new SpeedQuizSQLite(context);
+        SQLiteDatabase db = helper.getReadableDatabase();
+
+        Cursor cursor = db.query(true,"quiz",new String[]{"idQuiz","label","answer"},null,null,null,null,"idquiz",null);
+
+        while(cursor.moveToNext()){
+            listQuestion.add(new Question(cursor));
+        }
+        cursor.close();
+        db.close();
+
+        return listQuestion;
     }
 
     /**

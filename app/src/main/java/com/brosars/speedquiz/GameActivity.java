@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.brosars.speedquiz.controllers.QuestionData;
 import com.brosars.speedquiz.models.GameManager;
 import com.google.android.material.button.MaterialButton;
 
@@ -60,6 +61,7 @@ public class GameActivity extends AppCompatActivity {
         super.onStart();
 
         gameManager.setGameActivity(this);
+        gameManager.questionData = new QuestionData(this);
         gameManager.startTimer();
 
         playerOneButton.setOnClickListener(new View.OnClickListener() {
