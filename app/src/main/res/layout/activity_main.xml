@@ -1,102 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="140dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="4dp"
-            android:id="@+id/top_bar">
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="vertical">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/main_toolbar"
+            <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="?attr/actionBarSize"
-                app:titleTextColor="@color/white"
-                app:title="@string/home_title" />
+                android:elevation="4dp"
+                android:id="@+id/top_bar">
 
-        </com.google.android.material.appbar.AppBarLayout>
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/main_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="?attr/actionBarSize"
+                    app:titleTextColor="@color/white"
+                    app:title="@string/home_title" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_new_player"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/player_one_name"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:text="@string/home_new_player"
-            android:textSize="15sp" />
+            </com.google.android.material.appbar.AppBarLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/player_one_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/player_two_name"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="30dp"
-            android:visibility="invisible"
-            android:hint="@string/home_new_player_edit_text">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_new_player"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/player_one_name"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:text="@string/home_new_player"
+                android:textSize="15sp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_name_player_one"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/player_one_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_above="@id/player_two_name"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="30dp"
+                android:visibility="invisible"
+                android:hint="@string/home_new_player_edit_text">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_name_player_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/player_two_name"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="20dp"
-            android:visibility="invisible"
-            android:hint="@string/home_new_player_edit_text">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_name_player_two"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/player_two_name"
+                android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="invisible"
+                android:hint="@string/home_new_player_edit_text">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_name_player_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-    </RelativeLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <RelativeLayout
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_height="0dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_start_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/home_start_game"
+                android:visibility="invisible"
+                android:enabled="false"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/about_layout"
         android:layout_width="match_parent"
-        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="50dp"
         android:orientation="vertical"
-        android:gravity="center"
-        android:layout_height="0dp">
+        android:padding="20sp"
+        android:visibility="invisible"
+        android:background="@color/grey">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/about_version">
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/about_author">
+        </TextView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_start_game"
+            android:id="@+id/about_ok_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/home_start_game"
-            android:visibility="invisible"
-            android:enabled="false"
+            android:text="@string/about_ok"
+            android:layout_marginTop="20sp"
             android:textSize="15sp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

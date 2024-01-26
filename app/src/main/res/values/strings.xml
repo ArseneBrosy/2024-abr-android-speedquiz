@@ -9,4 +9,7 @@
     <string name="menu_about">About</string>
     <string name="button_menu">Menu</string>
     <string name="button_restart">Restart</string>
+    <string name="about_version">Version: 1.0.0</string>
+    <string name="about_author">Author: Arsène Brosy</string>
+    <string name="about_ok">OK</string>
 </resources>

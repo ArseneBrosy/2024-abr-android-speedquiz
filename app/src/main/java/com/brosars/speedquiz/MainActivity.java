@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MaterialButton newPlayerButton;
     private MaterialButton startGameButton;
+    private MaterialButton aboutOkButton;
     private TextInputLayout namePlayerOne;
     private TextInputLayout namePlayerTwo;
     private EditText editPlayerOneName;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         newPlayerButton = findViewById(R.id.button_new_player);
         startGameButton = findViewById(R.id.button_start_game);
+        aboutOkButton = findViewById(R.id.about_ok_button);
         namePlayerOne = findViewById(R.id.player_one_name);
         namePlayerTwo = findViewById(R.id.player_two_name);
         editPlayerOneName = findViewById(R.id.edit_name_player_one);
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_about) {
-            System.out.println("test");
+            findViewById(R.id.about_layout).setVisibility(View.VISIBLE);
             return true;
         }
         return false;
@@ -105,6 +107,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) { }
+        });
+
+        aboutOkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.about_layout).setVisibility(View.INVISIBLE);
+            }
         });
     }
 
