@@ -34,7 +34,7 @@ public class QuestionData {
         cursor.close();
         db.close();
 
-        Collections.shuffle(listQuestion );
+        Collections.shuffle(listQuestion);
 
         return listQuestion;
     }

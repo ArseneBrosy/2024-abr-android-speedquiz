@@ -1,5 +1,6 @@
 package com.brosars.speedquiz.models;
 
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
@@ -7,11 +8,8 @@ import android.view.View;
 import com.brosars.speedquiz.GameActivity;
 import com.brosars.speedquiz.controllers.QuestionData;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class GameManager {
-    private final static int QUESTION_TIME = 5000;
+    private int questionsSpeed;
     public QuestionData questionData;
     private int questionIndex = 0;
     private GameActivity gameActivity;
@@ -23,7 +21,7 @@ public class GameManager {
         public void run() {
             nextQuestion();
             // Show the next question after the time is up
-            mainHandler.postDelayed(this, QUESTION_TIME);
+            mainHandler.postDelayed(this, questionsSpeed);
         }
     };
     private int startTimer = 5;
@@ -54,7 +52,7 @@ public class GameManager {
         gameActivity.getEndButtons().setVisibility(View.INVISIBLE);
         gameActivity.setQuestion(questionData.getQuestions().get(0).getLabel());
         // Show the next question after the time is up
-        mainHandler.postDelayed(nextQuestionRunnable, QUESTION_TIME);
+        mainHandler.postDelayed(nextQuestionRunnable, questionsSpeed);
 
         playerOneScore = 0;
         playerTwoScore = 0;
@@ -97,7 +95,7 @@ public class GameManager {
         gameActivity.setScores(playerOneScore, playerTwoScore);
         // reset the delay to the next question
         mainHandler.removeCallbacks(nextQuestionRunnable);
-        mainHandler.postDelayed(nextQuestionRunnable, QUESTION_TIME);
+        mainHandler.postDelayed(nextQuestionRunnable, questionsSpeed);
         nextQuestion();
     }
 
@@ -107,5 +105,13 @@ public class GameManager {
      */
     public void setGameActivity(GameActivity gameActivity) {
         this.gameActivity = gameActivity;
+    }
+
+    /**
+     * Setter to the questions speed
+     * @param questionsSpeed the questions speed
+     */
+    public void setQuestionsSpeed(int questionsSpeed) {
+        this.questionsSpeed = questionsSpeed;
     }
 }

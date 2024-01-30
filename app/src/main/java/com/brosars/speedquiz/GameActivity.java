@@ -1,5 +1,6 @@
 package com.brosars.speedquiz;
 
+import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,9 +14,7 @@ import com.brosars.speedquiz.models.GameManager;
 import com.google.android.material.button.MaterialButton;
 
 public class GameActivity extends AppCompatActivity {
-
     private GameManager gameManager = new GameManager();
-
     private TextView playerOneNameText;
     private TextView playerTwoNameText;
     private TextView playerOneScoreText;
@@ -60,7 +59,10 @@ public class GameActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        SharedPreferences sharedPref = getSharedPreferences("IDValue", 0);
+        int questionSpeed = sharedPref.getInt("settings_questions_speed", 5000);
         gameManager.setGameActivity(this);
+        gameManager.setQuestionsSpeed(questionSpeed);
         gameManager.questionData = new QuestionData(this);
         gameManager.startTimer();
 
