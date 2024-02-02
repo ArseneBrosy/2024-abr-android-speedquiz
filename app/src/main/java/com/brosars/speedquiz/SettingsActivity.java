@@ -43,7 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        // get settings for questions speed
+        // get settings for questions speed and question count
         SharedPreferences sharedPref = getSharedPreferences("IDValue", 0);
         int questionSpeed = sharedPref.getInt("settings_questions_speed", 5000);
         int questionCount = sharedPref.getInt("settings_question_count", 0);

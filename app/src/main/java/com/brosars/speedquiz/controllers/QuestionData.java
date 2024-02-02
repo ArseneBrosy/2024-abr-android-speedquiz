@@ -1,6 +1,7 @@
 package com.brosars.speedquiz.controllers;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -36,7 +37,11 @@ public class QuestionData {
 
         Collections.shuffle(listQuestion);
 
-        return listQuestion;
+        // get settings for questions speed
+        SharedPreferences sharedPref = context.getSharedPreferences("IDValue", 0);
+        int questionCount = sharedPref.getInt("settings_question_count", listQuestion.size());
+
+        return new ArrayList<>(listQuestion.subList(0, questionCount));
     }
 
     /**
