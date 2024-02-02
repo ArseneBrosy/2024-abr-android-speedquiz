@@ -35,6 +35,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_below="@id/settings_question_speed"
+        android:id="@+id/settings_question_count_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -42,11 +43,22 @@
         android:hint="@string/settings_questions_number">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/settings_question_count"
             android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/settings_error_question_count"
+        android:layout_below="@id/settings_question_count_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/error"
+        android:visibility="invisible"
+        android:text="@string/error_too_many_questions"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/ok_button"
@@ -56,6 +68,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
+        android:enabled="false"
         android:text="@string/ok_button"
         android:textSize="15sp" />
 

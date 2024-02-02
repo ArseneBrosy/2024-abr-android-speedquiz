@@ -14,4 +14,6 @@
     <string name="ok_button">OK</string>
     <string name="settings_questions_speed">Questions speed</string>
     <string name="settings_questions_number">Question count</string>
+    <string name="error_too_many_questions">too many questions</string>
+    <string name="error_not_enough_question">not enough question</string>
 </resources>

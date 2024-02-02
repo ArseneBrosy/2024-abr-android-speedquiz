@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_about) {
             findViewById(R.id.about_layout).setVisibility(View.VISIBLE);
-            return true;
         }
         if (item.getItemId() == R.id.action_settings) {
             Intent settingsActivity = new Intent(MainActivity.this, SettingsActivity.class);
