@@ -16,4 +16,7 @@
     <string name="settings_questions_number">Question count</string>
     <string name="error_too_many_questions">too many questions</string>
     <string name="error_not_enough_question">not enough question</string>
+    <string name="add_button">Add</string>
+    <string name="questions_question">Question</string>
+    <string name="cancel_button">Cancel</string>
 </resources>
