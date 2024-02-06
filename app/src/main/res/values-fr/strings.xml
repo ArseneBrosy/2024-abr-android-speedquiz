@@ -18,4 +18,5 @@
     <string name="add_button">Ajouter</string>
     <string name="questions_question">Question</string>
     <string name="cancel_button">Annuler</string>
+    <string name="questions_is_true">Est vrai</string>
 </resources>

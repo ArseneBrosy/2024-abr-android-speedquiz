@@ -60,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
             Intent settingsActivity = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(settingsActivity);
         }
+        if (item.getItemId() == R.id.action_questions) {
+            Intent questionsActivity = new Intent(MainActivity.this, QuestionsActivity.class);
+            startActivity(questionsActivity);
+        }
         return false;
     }
 

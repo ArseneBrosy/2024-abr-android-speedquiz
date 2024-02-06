@@ -37,7 +37,7 @@ public class QuestionData {
 
         Collections.shuffle(listQuestion);
 
-        // get settings for questions speed
+        // get settings for question count
         SharedPreferences sharedPref = context.getSharedPreferences("IDValue", 0);
         int questionCount = sharedPref.getInt("settings_question_count", listQuestion.size());
 
