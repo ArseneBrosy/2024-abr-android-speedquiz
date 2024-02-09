@@ -59,6 +59,7 @@ public class SettingsActivity extends AppCompatActivity {
         cursor.close();
         db.close();
 
+        okButton.setEnabled(isValid());
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,19 +79,7 @@ public class SettingsActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String text = questionCountET.getText().toString();
-                if (text.isEmpty()) {
-                    return;
-                }
-                boolean isTooMany = Integer.parseInt(text) > maxQuestionCount;
-                boolean isNotEnough = Integer.parseInt(text) <= 0;
-                boolean isCorrect = !isTooMany && !isNotEnough;
-                if (isTooMany) {
-                    errorText.setText(R.string.error_too_many_questions);
-                }
-                if (isNotEnough) {
-                    errorText.setText(R.string.error_not_enough_question);
-                }
+                boolean isCorrect = isValid();
                 errorText.setVisibility(isCorrect ? View.INVISIBLE : View.VISIBLE);
                 okButton.setEnabled(isCorrect);
             }
@@ -98,5 +87,22 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
+    }
+
+    private boolean isValid() {
+        String text = questionCountET.getText().toString();
+        if (text.isEmpty()) {
+            return false;
+        }
+        boolean isTooMany = Integer.parseInt(text) > maxQuestionCount;
+        boolean isNotEnough = Integer.parseInt(text) <= 0;
+        boolean isCorrect = !isTooMany && !isNotEnough;
+        if (isTooMany) {
+            errorText.setText(R.string.error_too_many_questions);
+        }
+        if (isNotEnough) {
+            errorText.setText(R.string.error_not_enough_question);
+        }
+        return isCorrect;
     }
 }
