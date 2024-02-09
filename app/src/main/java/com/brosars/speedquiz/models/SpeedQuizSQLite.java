@@ -20,6 +20,7 @@ public class SpeedQuizSQLite extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // Create the table quiz
         db.execSQL("CREATE TABLE quiz(idQuiz INTEGER PRIMARY KEY, label TEXT, answer INTEGER);");
+        // Insert all the questions into the db
         db.execSQL("INSERT INTO quiz VALUES (null, \"The Amazon rainforest is often referred to as the lungs of the Earth.\", 1);");
         db.execSQL("INSERT INTO quiz VALUES (null, \"Marie Curie was the first woman to win a Nobel Prize.\", 1);");
         db.execSQL("INSERT INTO quiz VALUES (null, \"The currency of South Korea is the yuan.\", 0);");

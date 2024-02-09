@@ -33,6 +33,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        // get the components
         okButton = findViewById(R.id.ok_button);
         questionSpeedSlider = findViewById(R.id.settings_question_speed);
         questionCountET = findViewById(R.id.settings_question_count);
@@ -59,16 +60,19 @@ public class SettingsActivity extends AppCompatActivity {
         cursor.close();
         db.close();
 
+        // enable or disable the ok button depending of if the base settings are valid
         okButton.setEnabled(isValid());
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // save the settings
                 SharedPreferences sharedPreferences = getSharedPreferences("IDValue", 0);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("settings_questions_speed", (int)(questionSpeedSlider.getValue() * 1000));
                 editor.putInt("settings_question_count", Integer.parseInt(questionCountET.getText().toString()));
                 editor.apply();
 
+                // close the activity
                 finish();
             }
         });
@@ -79,6 +83,7 @@ public class SettingsActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // check if the question count is valid, show or hide the error text end enable or disable the ok button
                 boolean isCorrect = isValid();
                 errorText.setVisibility(isCorrect ? View.INVISIBLE : View.VISIBLE);
                 okButton.setEnabled(isCorrect);
@@ -89,6 +94,10 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Check if the settings are valid and display an error on the error text
+     * @return true if the settings are valid, else false
+     */
     private boolean isValid() {
         String text = questionCountET.getText().toString();
         if (text.isEmpty()) {

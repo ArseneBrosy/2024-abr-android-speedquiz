@@ -33,11 +33,15 @@ public class GameManager {
                 gameActivity.setQuestion(String.valueOf(startTimer));
                 mainHandler.postDelayed(this, 1000);
             } else {
+                // start timer ended
                 startGame();
             }
         }
     };
 
+    /**
+     * Start the countdown to the first question
+     */
     public void startTimer() {
         startTimer = 5;
         mainHandler.removeCallbacks(nextQuestionRunnable);
@@ -65,6 +69,7 @@ public class GameManager {
     public void nextQuestion() {
         questionIndex++;
         if (questionIndex >= questionData.getQuestions().size()) {
+            // if it is was the last one, show the end buttons
             gameActivity.getEndButtons().setVisibility(View.VISIBLE);
             return;
         }
@@ -83,9 +88,11 @@ public class GameManager {
      * @param player the player who answered the question
      */
     public void answerQuestion(int player) {
+        // ignore if the game is ended
         if (questionIndex >= questionData.getQuestions().size()) {
             return;
         }
+        // update the players scores
         int scoreAdder = getCurrentAnswer() == 1 ? 1 : -1;
         playerOneScore += player == 1 ? scoreAdder : 0;
         playerTwoScore += player == 2 ? scoreAdder : 0;

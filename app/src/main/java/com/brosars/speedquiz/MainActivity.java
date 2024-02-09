@@ -33,9 +33,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // create the toolbar
         Toolbar mainToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
 
+        // get the components
         newPlayerButton = findViewById(R.id.button_new_player);
         startGameButton = findViewById(R.id.button_start_game);
         aboutOkButton = findViewById(R.id.about_ok_button);
@@ -45,12 +47,14 @@ public class MainActivity extends AppCompatActivity {
         editPlayerTwoName = findViewById(R.id.edit_name_player_two);
     }
 
+    // create the toolbar's menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
 
+    // menu's buttons actions
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_about) {
@@ -71,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        // buttons actions
         newPlayerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +94,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        aboutOkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // close the about menu
+                findViewById(R.id.about_layout).setVisibility(View.INVISIBLE);
+            }
+        });
+
+        // edit texts actions
         editPlayerOneName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -114,13 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) { }
-        });
-
-        aboutOkButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                findViewById(R.id.about_layout).setVisibility(View.INVISIBLE);
-            }
         });
     }
 

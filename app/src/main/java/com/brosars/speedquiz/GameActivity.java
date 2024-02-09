@@ -59,6 +59,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        // get the questions speed from the settings
         SharedPreferences sharedPref = getSharedPreferences("IDValue", 0);
         int questionSpeed = sharedPref.getInt("settings_questions_speed", 5000);
         gameManager.setGameActivity(this);
@@ -66,6 +67,7 @@ public class GameActivity extends AppCompatActivity {
         gameManager.startTimer();
         gameManager.setQuestionsSpeed(questionSpeed);
 
+        // buttons actions
         playerOneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

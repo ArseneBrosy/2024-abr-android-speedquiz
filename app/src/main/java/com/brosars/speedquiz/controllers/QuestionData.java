@@ -29,12 +29,14 @@ public class QuestionData {
 
         Cursor cursor = db.query(true,"quiz",new String[]{"idQuiz","label","answer"},null,null,null,null,"idquiz",null);
 
+        // create the questions list
         while(cursor.moveToNext()){
             listQuestion.add(new Question(cursor));
         }
         cursor.close();
         db.close();
 
+        // shuffle the questions list
         Collections.shuffle(listQuestion);
 
         // get settings for question count

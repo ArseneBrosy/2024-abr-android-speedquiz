@@ -26,6 +26,7 @@ public class QuestionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
 
+        // get the components
         cancelButton = findViewById(R.id.cancel_button);
         addButton = findViewById(R.id.add_button);
         labelEditText = findViewById(R.id.question_label);
@@ -36,9 +37,19 @@ public class QuestionsActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        // buttons actions
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
+            }
+        });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // add the questions into the database and close the activity
+                addQuestion(labelEditText.getText().toString(), isTrueCheckbox.isChecked());
                 finish();
             }
         });
@@ -51,6 +62,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // enable the add button if the text isn't empty
                 String text = labelEditText.getText().toString();
                 addButton.setEnabled(text.length() > 0);
             }
@@ -60,16 +72,13 @@ public class QuestionsActivity extends AppCompatActivity {
 
             }
         });
-
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addQuestion(labelEditText.getText().toString(), isTrueCheckbox.isChecked());
-                finish();
-            }
-        });
     }
 
+    /**
+     * Add a question in the database
+     * @param label the label of the question
+     * @param isTrue is the question true
+     */
     private void addQuestion(String label, boolean isTrue) {
         String query = "INSERT INTO quiz VALUES (null, \"" + label + "\", " + (isTrue ? "1" : "0") + ");";
         SpeedQuizSQLite helper = new SpeedQuizSQLite(this);
